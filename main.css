@@ -1,1 +1,44 @@
-main.css
+/*body{
+	background-image: url(http://images.dailykos.com/images/291750/large/donald-trump-on-fire.gif?1472161051);
+	background-size:100%;
+}*/
+
+h1{
+	margin-left:20%;
+	font-size: 80px;
+	color: orange;
+}
+
+h2{
+	margin-left:20%;
+	font-size: 30px;
+	color: red;
+}
+
+#startGame{
+	position:relative;
+	padding: 10px;
+	color: blue;
+	font-size: 30px;
+	margin: auto;
+}
+
+
+
+#hiddenGame{
+	margin-left:30px;
+	display: none;
+}
+
+#guessInput{
+	padding:10px;
+	font-size:10px;
+}
+
+#guessButton{
+	padding:10px;
+}
+
+#intro{
+	margin-left: 40%;
+}
