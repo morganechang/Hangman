@@ -10,30 +10,54 @@
         <link href="https://fonts.googleapis.com/css?family=Eater|Reenie+Beanie|Underdog" rel="stylesheet">
     </head>
     <body>
-    	<h1>How shall we<br>HANGTRUMP?</h1>
+    	<h1 id="screen1">How shall we<br>HANGTRUMP?</h1>
     	<!-- <h2>Take down the monster piece by piece.</h2> -->
     	<!-- <hr> -->
-  		<br><br><br><br><br><br><br>
-    	<span id="intro"><button id="start-game">HANG THIS BOZO</button></span>
+  		    <br><br><br><br><br><br><br><br><br><br><br><br>
+    	   <span id="intro"><button id="start-game">HANG THIS BOZO</button></span>
 
-        <h2>WORDS ARE POWER.</h2>
+        <h1 id="screen2">WORDS ARE POWER.</h2>
 
-        <div id="directions"> Bring down the big, stupid, orange pancake one letter at a time.</div>
+            <div id="directions"> Bring down the big, stupid, orange pancake one letter at a time.</div>
 
-    	<span id="hidden-game"> <input type="text" id="guess-input" placeholder="guess a letter" maxlength="1"> <button class="guess-button">Guess</button>
-    	</span>
+    	   <span id="hidden-game"> <input type="text" id="guess-input" placeholder="guess a letter" maxlength="1"> <button class="guess-button">Guess</button>
+    	   </span>
 
         <div class="chosen-word">CHOSEN WORD</div>    
      
-        <div class="bad-guesses">WOMP WOMP...Trump is going to kill us all. <br>    
+        <div class="bad-guesses">WOMP WOMP...you're fueling the fire.<br>    
         </div>
+
+        <div class="bad-count"> You only have <span id= "bad-count-number"></span> chances left to hang Trump!</div>
+
+        <div class ="lost"> WELP, Trump is going to kill us all. </div>
+        <!-- <button class ="play-again"> PLAY AGAIN </button> -->
 
         <br><br><br><br><br>
 
-<!-- 
-div class overlay
-class image
-background-color: rgba (0,0,0,0.7)  -->
+
+        <!-- The Modal -->
+        <div class="modal-trump"> <!-- Modal content -->
+            <div class="modal-background">
+                <img src="https://i2.wp.com/fusion.net/wp-content/uploads/2016/03/cannotunsee6.gif?resize=500%2C500&quality=80&strip=all">
+            </div>
+        </div>
+
+        
+        <div class="modal-clinton"> <!-- Modal content -->
+            <div class="modal-background"> 
+                <img src="https://media.giphy.com/media/l2SpPZdjcX3JSjR3a/source.gif">
+            </div>
+        </div>
+        
+         <div class="modal-loss"> <!-- Modal content -->
+            <div class="modal-background"> 
+                <span class="close">&times;</span>
+                <p>WELP, Trump is going to kill us all.</p>
+                <button class="play-again" type="button"> PLAY AGAIN </button> 
+            </div>
+        </div>
+        
 
     	<!-- JavaScript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
