@@ -64,6 +64,14 @@ $(document).ready(function(){
 
 	function displayBadGuess() {  // this is a parameter and it will blow up if not called; shows that we are expecting something.
 		var guess = $("#guess-input").val();
+
+		$.getJSON(
+	      "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=trump",
+	      function(response) {
+	        console.log(response);
+	        $(".modal-trump").html("<img src=" + response.data.image_url + ">");
+	      });
+
 		$(".bad-guesses").append(guess, ", ");
 		$(".bad-guesses").show();
 		$(".bad-count").show();
@@ -122,6 +130,10 @@ $(document).ready(function(){
 		wordArray = chooseRandomWordArray();
 		displayWordHint();
 		};  // is there a way to only load single page? 
+
+
+
+
 
 
 // show progress of wrong answers (hanging man parts)
