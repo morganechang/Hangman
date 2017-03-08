@@ -2,11 +2,12 @@
 $(document).ready(function(){
 	console.log("ready!");
 	
-	var words = ["feminism", "unity", "strength", "power", "emma", "amen", "alex", "muslim", "mexico", "abortion"];
+	var words = ["feminism", "unity", "strength", "emma", "muslim", "mexico", "abortion", "hillary"];
 
 	var wordArray = [];   //var wordArray = []; // we're declaring this is a variable available to EVERYONE (and we assign value to it various times)
 	var wordHint = [];
 	var badGuesses = 7 //increase bad guesses by 1 i++
+	var goodGuesses = 0
 
 	$("#start-game").on("click", function() {
 		startGame();
@@ -15,7 +16,7 @@ $(document).ready(function(){
 	function startGame(){
 		console.log("the player wants to start the game!");
 		$("#start-game").hide();  // or animate and move to corner.
-		$("#screen1").hide();
+		$("#header1").hide();
 		$("#screen2").show();
 		$("#hidden-game").show();
 		$("#directions").show();
@@ -66,16 +67,18 @@ $(document).ready(function(){
 		$(".bad-guesses").append(guess, ", ");
 		$(".bad-guesses").show();
 		$(".bad-count").show();
-		$("#bad-count-number").html(badGuesses -=1);
-		// $(".modal-trump").show();
-		// 	setTimeout(function(){
-		// 		$(".modal-trump").hide();
-		// 	}, 1500);
-
+		$("#bad-count-number").html(badGuesses -=1); // += is the same as ++ // -= is same as --
+		$(".modal-trump").show();
+			setTimeout(function(){
+				$(".modal-trump").hide();
+			}, 2000);
 		if (badGuesses == 0) {
-			// $(".lost").show();
+			// $(".modal-trump, .page2").hide();
+			// $(".page2").hide()
+			$(".lost").show();
+			$(".play-again").show();
 			// $(".play-again").show();
-			$(".modal-loss").show();
+
 		};
 
 	}
@@ -89,41 +92,42 @@ $(document).ready(function(){
 	function guessLetter() {
 		var guess = $("#guess-input").val();
 		var matches = 0;
+		// var total = wordArray.toString();  //replace(/aA/g,"_")
 		// var guess = "e"; // this has to be dynamic, something you can call everytime
 		for (var i=0; i < wordArray.length; i++) {  // length = 8, but our i only goes up to 7
 			if (guess == wordArray[i]) {
 				updateWordHint(guess);
 				matches = 1;  // here, (guess) is an argument
 				console.log("Yes, there is an " + guess + ".");
-				
+				goodGuesses++;
+				debugger
 				$(".modal-clinton").show();
-					setTimeout(function(){
+				setTimeout(function(){
 					$(".modal-clinton").hide();
-				}, 1500);
-
-				} 
-			};
-			if (matches == 0){
-				console.log("Nope, there is not an " + guess + ".");
-				displayBadGuess();
-
-			}
-			$("#guess-input").val("");
+				}, 2000);
+			} 
 		};
+		if (matches == 0){
+			console.log("Nope, there is not an " + guess + ".");
+			displayBadGuess();
+		}
+		if (goodGuesses == wordArray.length){
+			console.log("WIN");
+		}
+		$("#guess-input").val("");
+	};
 
 	function playAgain() {
-		location.reload();
-		// startGame();
+		wordHint = [];
+		wordArray = chooseRandomWordArray();
+		displayWordHint();
 		};  // is there a way to only load single page? 
 
 
 // show progress of wrong answers (hanging man parts)
 // play again button
 // when you lose, animation to show what WORD IS? 
-// when you win, animation
-
-
-
+// when you win, animationever
 
  			// call word array.length, then allocate space for each.
 			// where it starts, ends, increments 
@@ -147,28 +151,6 @@ $(document).ready(function(){
 
 });
 
-	// function modalWrong() {
-	// // Get the modal
-	// 	var modal = $("#myModal");
-
-	// 	// Get the image and insert it inside the modal - use its "alt" text as a caption
-	// 	var img = $("#wrong-letter-gif");
-	// 	var modalImg = $("#img01");
-	// 	var captionText = $("#caption");
-	// 	img.on("click", function(){
-	// 	    modal.show();
-	// 	    modalImg.src = this.src;
-	// 	    captionText.html() = this.alt;
-	// 	});
-
-	// 	// Get the <span> element that closes the modal
-	// 	// var span = $(".close")[0];
-
-	// 	// When the user clicks on <span> (x), close the modal
-	// 	$(".close").on("click", function() { 
-	// 	  modal.hide();
-	// 	});
-	// }
 
 
 //1. if you lose... keep track of every wrong guess - we can only have 7 before you DIE

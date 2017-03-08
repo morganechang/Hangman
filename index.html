@@ -8,21 +8,24 @@
         <!-- CSS -->
         <link rel="stylesheet" href="main.css">
         <link href="https://fonts.googleapis.com/css?family=Eater|Reenie+Beanie|Underdog" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
     </head>
-    <body>
-    	<h1 id="screen1">How shall we<br>HANGTRUMP?</h1>
-    	<!-- <h2>Take down the monster piece by piece.</h2> -->
+    <body> 
+        
+    <section>   
+        <h1 id="header1"> shall <br> we<br>HANGTRUMP?</h1> 
     	<!-- <hr> -->
-  		    <br><br><br><br><br><br><br><br><br><br><br><br>
-    	   <span id="intro"><button id="start-game">HANG THIS BOZO</button></span>
+  		    <br><br><br>
+    <div id="intro"><button id="start-game">HANG THIS BOZO</button></div>
 
-        <h1 id="screen2">WORDS ARE POWER.</h2>
+    <section class="page2"> 
+        <h1 id="screen2">WORDS ARE POWER.</h1>
+        <br>
+        <h2 id="directions"> These are words that Trump hates.  Let's bring down the big, stupid, orange pancake one letter at a time.</h2>
 
-            <div id="directions"> Bring down the big, stupid, orange pancake one letter at a time.</div>
-
-    	   <span id="hidden-game"> <input type="text" id="guess-input" placeholder="guess a letter" maxlength="1"> <button class="guess-button">Guess</button>
-    	   </span>
-
+	   <span id="hidden-game"> <input type="text" id="guess-input" placeholder="guess a letter" maxlength="1"> <button class="guess-button">Guess</button>
+	   </span>
+        
         <div class="chosen-word">CHOSEN WORD</div>    
      
         <div class="bad-guesses">WOMP WOMP...you're fueling the fire.<br>    
@@ -30,31 +33,26 @@
 
         <div class="bad-count"> You only have <span id= "bad-count-number"></span> chances left to hang Trump!</div>
 
-        <div class ="lost"> WELP, Trump is going to kill us all. </div>
+        
+        <div class="lost"> WELP, Trump is going to kill us all. 
+            <img src="http://static.boredpanda.com/blog/wp-content/uploads/2017/02/trump-executive-order-memes-1-58919d2ad509c__605.gif">
+            <button class="play-again"> PLAY AGAIN </button> 
+        </div>
         <!-- <button class ="play-again"> PLAY AGAIN </button> -->
 
         <br><br><br><br><br>
 
-
-        <!-- The Modal -->
+       
         <div class="modal-trump"> <!-- Modal content -->
-            <div class="modal-background">
-                <img src="https://i2.wp.com/fusion.net/wp-content/uploads/2016/03/cannotunsee6.gif?resize=500%2C500&quality=80&strip=all">
+            <div class="modal-background">  <!-- The Modal -->
+                <img src="assets/trump.gif">
             </div>
         </div>
 
         
         <div class="modal-clinton"> <!-- Modal content -->
-            <div class="modal-background"> 
+            <div class="modal-background">   <!-- The Modal -->
                 <img src="https://media.giphy.com/media/l2SpPZdjcX3JSjR3a/source.gif">
-            </div>
-        </div>
-        
-         <div class="modal-loss"> <!-- Modal content -->
-            <div class="modal-background"> 
-                <span class="close">&times;</span>
-                <p>WELP, Trump is going to kill us all.</p>
-                <button class="play-again" type="button"> PLAY AGAIN </button> 
             </div>
         </div>
         

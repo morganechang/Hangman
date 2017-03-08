@@ -1,52 +1,45 @@
 body{
 	background-image: url(http://images.dailykos.com/images/291750/large/donald-trump-on-fire.gif?1472161051);
 	background-size:100%;
-	font-family: 'Reenie Beanie', cursive;
+	font-family: 'Rubik Mono One', sans-serif;
 	/*background-repeat: no-repeat;	*/
 }
 
-#screen1{
+#intro{
+	margin-left: 30%;
+}
+
+#header1{
 	margin-left:10%;
 	font-size: 80px;
 	color: orange;
 	text-align: center
+	font-family: 'Rubik Mono One', sans-serif;
 }
 
 #screen2{
 	margin-left:20%;
-	font-size: 30px;
-	color: red;
 	position: absolute; top: 0;
+	display: none;
+	color: pink;
+	font-size: 60px;
+	text-align: center;
+	font-family: 'Reenie Beanie', cursive, bold;
 }
 
 #start-game{
 	padding: 10px;
-	color: red;
 	font-size: 30px;
 	margin: center;
-	font-family: 'Reenie Beanie', cursive;
+	background-color: red;
+	font-family: 'Rubik Mono One', sans-serif;
+	float: center;
 }
 
 #directions{
 	display: none;
 	color: pink;
 	font-size: 40px;
-	text-align: center;
-	font-family: 'Reenie Beanie', cursive, bold;
-}
-
-#directions{
-	display: none;
-	color: pink;
-	font-size: 40px;
-	text-align: center;
-	font-family: 'Reenie Beanie', cursive, bold;
-}
-
-#screen2{
-	display: none;
-	color: pink;
-	font-size: 60px;
 	text-align: center;
 	font-family: 'Reenie Beanie', cursive, bold;
 }
@@ -55,11 +48,10 @@ body{
 #hidden-game{
 	margin-left:30px;
 	display: none;
-
 }
 
 
-.chosen-word, .bad-guesses, .bad-count, .lost, .play-again{
+.chosen-word, .bad-guesses, .bad-count, .play-again, .lost{
 	display: none;
 	padding: 10px;
 	color: orange;
@@ -79,19 +71,19 @@ body{
 	padding:10px;
 }
 
-#intro{
-	margin-left: 40%;
+.bad-count{
+	color: white;
 }
 
 
-.modal-trump, .modal-clinton, .modal-loss {
+.modal-trump, .modal-clinton{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 80%; /* Full width */
+    height: 80%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -100,7 +92,7 @@ body{
 
 .modal-background {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
