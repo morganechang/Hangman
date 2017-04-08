@@ -6,24 +6,24 @@ $(document).ready(function(){
 
 	var wordArray = [];   //var wordArray = []; // we're declaring this is a variable available to EVERYONE (and we assign value to it various times)
 	var wordHint = [];
-	var badGuesses = 7 //increase bad guesses by 1 i++
-	var goodGuesses = 0
+	var badGuesses = 7 //decrease remaining bad guesses by 1=-
+	var goodGuesses = 0 // increase good guesses by 1-+
 
 	$("#start-game").on("click", function() {
 		startGame();
 	});
 
+
 	function startGame(){
 		console.log("the player wants to start the game!");
-		$("#start-game").hide();  // or animate and move to corner.
-		$("#header1").hide();
-		$("#screen2").show();
-		$("#hidden-game").show();
-		$("#directions").show();
-		$(".chosen-word").show().css("color", "red");
+		$(".intro-container").hide();
+		$(".game-container").show();
+		$("#chosen-word").show().css("color", "red");
 		$("body").css("background-image", "url(https://s-media-cache-ak0.pinimg.com/originals/da/3d/fc/da3dfcf00e3ce5a9fca0a177703902af.jpg)");
 		wordArray = chooseRandomWordArray();
+		debugger
 		displayWordHint();
+
 	};	
 
 		//happens on user click button
@@ -47,7 +47,7 @@ $(document).ready(function(){
 			wordHint.push("_");
 		}
 		fields = wordHint.toString().replace(/,/g," ");  //replace(/aA/g,"_") // turning array into a string .toString()
-		$(".chosen-word").text(fields);
+		$("#chosen-word").text(fields);
 
 		// str.replace(/\s+/g, '')
 	}
@@ -57,36 +57,43 @@ $(document).ready(function(){
 			if (letter == wordArray[i]) {
 				wordHint[i] = letter;
 				fields = wordHint.toString().replace(/,/g," ");  //replace(/aA/g,"_")
-				$(".chosen-word").text(fields);	
+				$("#chosen-word").text(fields);	
 			} 
 		};
 	}
 
 	function displayBadGuess() {  // this is a parameter and it will blow up if not called; shows that we are expecting something.
-		var guess = $("#guess-input").val();
+		var guess = $("#guess-input").val().toLowerCase();	
 
 		$.getJSON(
 	      "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=trump",
 	      function(response) {
 	        console.log(response);
 	        $(".modal-trump").html("<img src=" + response.data.image_url + ">");
-	      });
-
+	      });  //"response" is specific term
 		$(".bad-guesses").append(guess, ", ");
-		$(".bad-guesses").show();
-		$(".bad-count").show();
+		$(".bad-guesses").show().css("display", "block");
+		$(".bad-count").show().css("display", "block");
 		$("#bad-count-number").html(badGuesses -=1); // += is the same as ++ // -= is same as --
 		$(".modal-trump").show();
 			setTimeout(function(){
 				$(".modal-trump").hide();
 			}, 2000);
 		if (badGuesses == 0) {
-			// $(".modal-trump, .page2").hide();
-			// $(".page2").hide()
-			$(".lost").show();
-			$(".play-again").show();
-			// $(".play-again").show();
-
+			// $("#chosen-word").show().css("display", "block");
+			$("#chosen-word").hide();
+			// debugger
+			$("#correct-word-intro").show().css("display","block");
+			$("#correct-word").append(wordArray);
+			setTimeout(function(){
+					$(".game-container").hide();
+					$(".lost").show();
+					$("body").css("background-image", "url(https://img.clipartfest.com/2a13c81e91d4921e18eb2bd38ceb9043_-it-gif-donald-trump-meme-trump-meme_386-515.gif)");
+				}, 2000);
+			// debugger
+			
+			// $("body").css("background-image", "url(https://img.clipartfest.com/2a13c81e91d4921e18eb2bd38ceb9043_-it-gif-donald-trump-meme-trump-meme_386-515.gif)", "background-size", "");
+			// })		
 		};
 
 	}
@@ -98,8 +105,15 @@ $(document).ready(function(){
 	//show blank spaces to represent each letter
 	
 	function guessLetter() {
-		var guess = $("#guess-input").val();
+		var guess = $("#guess-input").val().toLowerCase();
 		var matches = 0;
+
+		$.getJSON(
+	      "https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=clinton",
+	      function(response) {
+	        console.log(response);
+	        $(".modal-clinton").html("<img src=" + response.data.image_url + ">");
+	      });
 		// var total = wordArray.toString();  //replace(/aA/g,"_")
 		// var guess = "e"; // this has to be dynamic, something you can call everytime
 		for (var i=0; i < wordArray.length; i++) {  // length = 8, but our i only goes up to 7
@@ -108,7 +122,6 @@ $(document).ready(function(){
 				matches = 1;  // here, (guess) is an argument
 				console.log("Yes, there is an " + guess + ".");
 				goodGuesses++;
-				debugger
 				$(".modal-clinton").show();
 				setTimeout(function(){
 					$(".modal-clinton").hide();
@@ -118,28 +131,36 @@ $(document).ready(function(){
 		if (matches == 0){
 			console.log("Nope, there is not an " + guess + ".");
 			displayBadGuess();
+
 		}
 		if (goodGuesses == wordArray.length){
-			console.log("WIN");
+			console.log("YOU WIN");
+			$(".game-container").hide();
+			$("body").css("background-image", "url(https://media.giphy.com/media/l2SpPZdjcX3JSjR3a/giphy.gif)");
+			$(".won").show();
 		}
 		$("#guess-input").val("");
 	};
 
-	function playAgain() {
-		wordHint = [];
-		wordArray = chooseRandomWordArray();
-		displayWordHint();
+	function playAgain() {	
+		location.reload();
+		debugger
+		startGame();
+		$("#start-game").trigger("click");
+		
+		// location.reload();
+		// $(".game-container").hide();
+		// $("#end-game").hide();
+		// $("#chosen-word").remove();
+		// $("#bad-guesses").hide();
+		// $("#bad-count").hide();
+		// startGame();
+	
+		// wordHint = [];
+		// wordArray = chooseRandomWordArray();
+		// displayWordHint();
+		// debugger
 		};  // is there a way to only load single page? 
-
-
-
-
-
-
-// show progress of wrong answers (hanging man parts)
-// play again button
-// when you lose, animation to show what WORD IS? 
-// when you win, animationever
 
  			// call word array.length, then allocate space for each.
 			// where it starts, ends, increments 
@@ -156,19 +177,14 @@ $(document).ready(function(){
 
 
 	$(".play-again").on("click", function(){
-		playAgain();	
-		// displayWordHint();
+		playAgain();
 	});
+
 // guessLetter()
 
 });
 
 
-
-//1. if you lose... keep track of every wrong guess - we can only have 7 before you DIE
-//2. if you win.....
-//3. add modal with gif (under intro tags)
-//4. add bad letters
 
 
 // user typers

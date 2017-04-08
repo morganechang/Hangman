@@ -10,56 +10,69 @@
         <link href="https://fonts.googleapis.com/css?family=Eater|Reenie+Beanie|Underdog" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
     </head>
-    <body> 
-        
-    <section>   
-        <h1 id="header1"> shall <br> we<br>HANGTRUMP?</h1> 
-    	<!-- <hr> -->
-  		    <br><br><br>
-    <div id="intro"><button id="start-game">HANG THIS BOZO</button></div>
-
-    <section class="page2"> 
-        <h1 id="screen2">WORDS ARE POWER.</h1>
-        <br>
-        <h2 id="directions"> These are words that Trump hates.  Let's bring down the big, stupid, orange pancake one letter at a time.</h2>
-
-	   <span id="hidden-game"> <input type="text" id="guess-input" placeholder="guess a letter" maxlength="1"> <button class="guess-button">Guess</button>
-	   </span>
-        
-        <div class="chosen-word">CHOSEN WORD</div>    
-     
-        <div class="bad-guesses">WOMP WOMP...you're fueling the fire.<br>    
+    <body class="game-body">    
+        <div class="intro-container">   
+            <h1> shall <br> we<br>HANGTRUMP?</h1> 
+            <br><br><br>
+            <span id="intro"><button id="start-game">HANG THIS BOZO</button></span>
         </div>
-
-        <div class="bad-count"> You only have <span id= "bad-count-number"></span> chances left to hang Trump!</div>
-
         
-        <div class="lost"> WELP, Trump is going to kill us all. 
-            <img src="http://static.boredpanda.com/blog/wp-content/uploads/2017/02/trump-executive-order-memes-1-58919d2ad509c__605.gif">
-            <button class="play-again"> PLAY AGAIN </button> 
-        </div>
-        <!-- <button class ="play-again"> PLAY AGAIN </button> -->
+        <div class="game-container"> 
+            <h1 class="flex-item" id="screen2">WORDS ARE POWER.</h1>
+            <br>
+            <br> 
+            <br><br><br><br>
+            <h2> These are words that Trump hates. <br> Let's bring down the big, stupid, orange pancake one letter at a time.</h2>
+            <br>
+            <span class="flex-item" id="chosen-word"></span> 
+            <span class="flex-item" id="correct-word-intro">the correct word is: <br></span>   
+            <span class="flex-item" id="correct-word"></span>  
+            <br>
+    	   <input type="text" id="guess-input" placeholder="guess a letter"  pattern="[]" title="Invalid input"> <button class="guess-button">Guess</button>
+           <br>
+            <br>  
+            <span class="bad-guesses">WOMP WOMP...you're fueling the fire. There is no: <br>  
+            </span>
+                <br>
+            <span class="bad-count"> You only have <span id= "bad-count-number"></span> chances left to hang Trump!</span>
+        </div>  
 
-        <br><br><br><br><br>
+        <div id="end-game">
+            <div class="lost"> WELP, Trump is going to kill us all. 
+                <button class="play-again"> PLAY AGAIN </button> 
+            </div>    
+            <div class="won">OHHHHHH HALLELUJAH! <br> Everything is going to be all right. 
+            <button class="play-again"> PLAY AGAIN </button>  
+            </div>  
+        </div>   
+            <!-- <button class ="play-again"> PLAY AGAIN </button> -->
 
-       
-        <div class="modal-trump"> <!-- Modal content -->
-            <div class="modal-background">  <!-- The Modal -->
-              <!--   <img src="assets/trump.gif"> -->
+            <br><br><br><br><br>
+
+           
+            <div class="modal-trump"> <!-- Modal content -->
+                <div class="modal-container">  <!-- The Modal -->
+                  <!--   <img src="assets/trump.gif"> -->
+                </div>
             </div>
-        </div>
 
-        
-        <div class="modal-clinton"> <!-- Modal content -->
-            <div class="modal-background">   <!-- The Modal -->
-                <img src="https://media.giphy.com/media/l2SpPZdjcX3JSjR3a/source.gif">
+            
+            <div class="modal-clinton"> <!-- Modal content -->
+                <div class="modal-container">   <!-- The Modal -->
+                   <!--  <img src="https://media.giphy.com/media/l2SpPZdjcX3JSjR3a/source.gif"> -->
+                </div>
             </div>
-        </div>
-        
+            
 
-    	<!-- JavaScript -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="main.js"></script>
+        	<!-- JavaScript -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+            <script src="main.js"></script>
     </body>
 </html>
 
+
+       
+    <!-- 
+           pattern=".{6,}"
+           maxlength="1"
+           pattern="[A-Za-z]{1}" -->
